@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Table Challenge</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container-fluid">
+
+      <h1>Table Challenge</h1>
+      <form action="/update" method="post">
+        <button class="btn btn-primary" type="submit">Add Data</button>
+      </form>
+
+      <form action="/filter" method="post">
+        <select class="custom-select" multiple>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <button class="btn btn-secondary" type="submit">Filter column</button>
+      </form>
+
+      <table class="table table-striped">
+        <% if (dataFromAPI) { %>
+        <thead>
+          <tr>
+            <% for (key in dataFromAPI[0]) { %>
+              <td><%= key %></td>
+            <% } %>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% for (let i = 0; i < dataFromAPI.length; i++) { %>
+            <tr>
+            <% for (key in dataFromAPI[i]) { %>
+              <td><%= dataFromAPI[i][key] %></td>
+            <% } %>
+            </tr>
+          <% } %>
+        </tbody>
+        <% } %>
+      </table>
+
+      <!-- <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table> -->
+
+    </div> <!-- container -->
+  </body>
+</html>
